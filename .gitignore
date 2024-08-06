@@ -1,2 +1,2 @@
 .env
-.venv
+.ENV_DIR
