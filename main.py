@@ -20,35 +20,21 @@ async def ping(ctx):
     await ctx.send('pong')
 
 
+'''
+BOT START AND EXIT
+'''
 @bot.event
 async def on_ready():
     print("-------------PY BOT RUNNING -------------")
 
-
-# load x cog
-@bot.command(hidden=True) # hides from .help
-async def load(ctx, extension):
-    if str(ctx.author.id) in ADMIN:
-        await bot.load_extension(f'cogs.{extension}')
-        await ctx.send(f'Loaded {extension}')
-
-
-# unload x cog
+# shutdown bot
 @bot.command(hidden=True)
-async def unload(ctx, extension):
+async def exit(ctx):
     if str(ctx.author.id) in ADMIN:
-        await bot.unload_extension(f'cogs.{extension}')
-        await ctx.send(f'Unloaded {extension}')
-
-
-# reloads x cog
-@bot.command(hidden=True)
-async def reload(ctx, extension):
-    if str(ctx.author.id) in ADMIN:
-        await bot.unload_extension(f'cogs.{extension}')
-        await bot.load_extension(f'cogs.{extension}')
-        await ctx.send(f'Reloaded {extension}')
-
+        await ctx.send('**Ciao**')
+        await bot.close()
+    else:
+        await ctx.send('**No, you**')
 
 # loads cogs on start up
 async def setup_hook(): 
@@ -63,6 +49,35 @@ async def main():
         await bot.start(os.getenv("TOKEN"))
 
 
+'''
+COGS
+'''
+# load x cog
+@bot.command(hidden=True) # hides from .help
+async def load(ctx, extension):
+    if str(ctx.author.id) in ADMIN:
+        await bot.load_extension(f'cogs.{extension}')
+        await ctx.reply(f'Loaded {extension}', mention_author=False)
+
+
+# unload x cog
+@bot.command(hidden=True)
+async def unload(ctx, extension):
+    if str(ctx.author.id) in ADMIN:
+        await bot.unload_extension(f'cogs.{extension}')
+        await ctx.reply(f'Unloaded {extension}', mention_author=False)
+
+
+# reloads x cog
+@bot.command(hidden=True)
+async def reload(ctx, extension):
+    if str(ctx.author.id) in ADMIN:
+        await bot.unload_extension(f'cogs.{extension}')
+        await bot.load_extension(f'cogs.{extension}')
+        await ctx.reply(f'Reloaded {extension}', mention_author=False)
+
+
+'''
+STARTS THE BOT
+'''
 asyncio.run(main()) # loads the cogs and runs bot
-
-
