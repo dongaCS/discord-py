@@ -21,7 +21,7 @@ async def ping(ctx):
 #.8ball works as well as .eightball
 @bot.command(aliases=['8ball']) 
 async def eightball(ctx):
-    await ctx.send(random.choice([
+    await ctx.reply(random.choice([
         "It is certain.",
         "It is decidedly so.",
         "Without a doubt.",      
@@ -42,7 +42,7 @@ async def eightball(ctx):
         "My sources say no.",
         "Outlook not so good.",   
         "Very doubtful."
-    ]))
+    ]), mention_author=False)
 
 load_dotenv() # set .env variables
 bot.run(os.getenv("TOKEN"))
