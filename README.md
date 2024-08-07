@@ -1,8 +1,15 @@
 # Discord Bot in PY
  playing with discord bot in python
 
+## Table of Contents
+- [Setting up Python](#Setting-up-Python)
+  - Installing Python
+  - Virtual Environments (venv)
+  - Dependencies
+- [Setting up Discord App](#Setting-up-Discord-App)
 
-## Setup 
+
+## Setting up Python
 ### Installing Python
 MacOS already comes with Python3 (system python, don't mess with it)
 - To check current python verison open the terminal and type `python --verison`
@@ -20,7 +27,7 @@ We want a fresh install, of the latest verison of Python3 as 3.9's support is en
 Because Python installs are system wide, if we were to install say NumPy 1.23 we won't be able to run version 1.26. If we want to installed 1.26 then we have to uninstall 1.23. This could lead to problems as the updated version may have new implementations of functions we used in our project. Ultimately it would cause us to reinstall 1.23 and 1.26 whenever we switch projects. **Virtual Environments** create a separate, isolated instance of the Python runtime for a project each with its own complement of packages.
 
 #### Why venv
-- Running with the system (path) Python and libraries limits you to one specific Python version
+- Running with the system (path) Python and libraries limits us to one specific Python version
 - Running all Python applications on one Python installation can lead to version conflicts
 - venv is are ways to self-contain Python installs
 
@@ -38,7 +45,7 @@ python3 -m venv .ENV_DIR
    - Click **Yes**
 
 ![steps.png](https://github.com/dongaCS/discord-py/blob/main/step%20.png?raw=true)
-- Open a new terminal and if you see (.ENV_DIR) CURRENT_PATH % its activated
+- Open a new terminal and see if its (.ENV_DIR) CURRENT_PATH % then its activate
   
 ![active.png](https://github.com/dongaCS/discord-py/blob/main/active.png?raw=true)
 
@@ -63,6 +70,11 @@ pip3 install python-dotenv
 ```
 pip3 freeze > requirements.txt
 ``` 
-- will create txt file and saves all your python libraries
+- will create txt file and save all our python libraries
 
 
+## Setting up Discord App
+In order to make a Discord Bot, we need a create a [Discord Account](https://discord.com/login)
+- Follow this to setup Bot and Token [Discord.py](https://discordpy.readthedocs.io/en/stable/discord.html)
+
+will finish later, idk
