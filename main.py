@@ -1,4 +1,5 @@
 import os
+import asyncio
 from dotenv import load_dotenv
 
 import discord
@@ -10,39 +11,16 @@ intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix='.', intents=intents)
 
-@bot.event
-async def on_ready():
-    print("------------- BOT RUNNING -------------")
-
 @bot.command()
 async def ping(ctx):
     await ctx.send('pong')
 
-#.8ball works as well as .eightball
-@bot.command(aliases=['8ball']) 
-async def eightball(ctx):
-    await ctx.reply(random.choice([
-        "It is certain.",
-        "It is decidedly so.",
-        "Without a doubt.",      
-        "Yes - definitely.",
-        "You may rely on it.",
-        "As I see it, yes.",
-        "Most likely.",
-        "Outlook good.",
-        "Yes.",      
-        "Signs point to yes.",
-        "Reply hazy, try again.",
-        "Ask again later.",
-        "Better not tell you now.",
-        "Cannot predict now.",
-        "Concentrate and ask again.",      
-        "Don't count on it.",
-        "My reply is no.",
-        "My sources say no.",
-        "Outlook not so good.",   
-        "Very doubtful."
-    ]), mention_author=False)
+
+@bot.event
+async def on_ready():
+    print("-------------PY BOT RUNNING -------------")
+
+
 
 @bot.command()
 async def spam(ctx, count, *args):
@@ -58,5 +36,19 @@ async def spam(ctx, count, *args):
         await ctx.send(f'{message}')
         
 
-load_dotenv() # set .env variables
-bot.run(os.getenv("TOKEN"))
+async def setup_hook():
+    for file in os.listdir('./cogs'):
+        if file.endswith('.py'):
+            await bot.load_extension(f'cogs.{file[:-3]}')
+
+
+async def main():
+    async with bot:
+        await setup_hook()
+        load_dotenv() # set .env variables
+        await bot.start(os.getenv("TOKEN"))
+
+
+asyncio.run(main()) # loads the cogs and runs bot
+
+
