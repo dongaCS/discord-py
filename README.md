@@ -13,6 +13,7 @@ We want a fresh install, of the latest verison of Python3 as 3.9's support is en
 - The version should change by itself, we can check by typing `python --verison`
 - We can also look at the path by using command `which python3`
 - returns: **/Library/Frameworks/Python.framework/Versions/3.12/bin/python3**
+- Make sure at the end of the install to get the **certificate file** with (Install Certificates.command) in folder
 
 ---
 ### Virtual Environments (venv)
@@ -27,7 +28,10 @@ Because Python installs are system wide, if we were to install say NumPy 1.23 we
 #### Setting up Virtual Environment
 1. In the folder make a file called `main.py`
 2. Set the Python Interpreter to 3.12.4
-3. Open a terminal at folder path and do command `python3 -m venv .ENV_DIR`
+3. Open a terminal at folder path and do command
+```
+python3 -m venv .ENV_DIR
+```
    - .ENV_DIR is the folder name (don't forget to add to .gitignore)
    - In our project folder there should be a folder called `.ENV_DIR`
 4. A prompt: **We noticed a new environment has been created. Do you want to select it for the workspace folder?**
@@ -43,5 +47,22 @@ Because Python installs are system wide, if we were to install say NumPy 1.23 we
 
 ---
 ### Dependencies
-- Python dependencies are defined in **requirements.txt**
-- `pip freeze > requirements.txt` save all your python libraries with current version into requirements.txt
+
+#### (.ENV_DIR) CURRENT_PATH % Installs
+1. [discord.py 2.4.0](https://pypi.org/project/discord.py/)
+```
+python3 -m pip install -U discord.py
+```
+2. [python-dotenv 1.0.1](https://pypi.org/project/python-dotenv/)
+```
+pip3 install python-dotenv
+```
+
+---
+#### Python dependencies are defined in: requirements.txt
+```
+pip3 freeze > requirements.txt
+``` 
+- will create txt file and saves all your python libraries
+
+
