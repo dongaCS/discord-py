@@ -7,9 +7,8 @@ class EightBall(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    # .8ball works as well as .eightball
-    @commands.command(name='8ball')
-    async def eightball(self, ctx, str):
+    @commands.command(name='8ball') # change command name to 8ball 
+    async def eightball(self, ctx, question):
         
         await ctx.reply(random.choice([
         "It is certain.",
@@ -34,7 +33,7 @@ class EightBall(commands.Cog):
         "Very doubtful."
     ]), mention_author=False)
             
-
+    # must ask a question
     @eightball.error
     async def load_err(self, ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
