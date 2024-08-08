@@ -7,6 +7,10 @@
   - Virtual Environments (venv)
   - Dependencies
 - [Setting up Discord App](#Setting-up-Discord-App)
+- [The Bot](#The-Bot)
+  - Commands
+  - Commands for Dev
+  - Command Takeaway
 
 
 ## Setting up Python
@@ -72,9 +76,71 @@ pip3 freeze > requirements.txt
 ``` 
 - will create txt file and save all our python libraries
 
-
 ## Setting up Discord App
+### Discord Account 
 In order to make a Discord Bot, we need a create a [Discord Account](https://discord.com/login)
+### Discord Bot Token 
 - Follow this to setup Bot and Token [Discord.py](https://discordpy.readthedocs.io/en/stable/discord.html)
 
-will finish later, idk
+TO BE CONTINUED...
+
+## The Bot 
+(will beautify at some point)
+### Commands
+- ping => send back pong
+  - .ping 
+- 8ball(string) => ask it a question and it'll give some the definitive answer (never wrong)
+  - .8ball will complete this readme?
+- spam(number, string) => i'll spam for you
+  - .spam 5 lol
+- guess => lets play a game
+  - .guess
+
+---
+### Commands for Dev
+- exit => closes the bot
+- Cogs are like modules/extensions for discord.py bots. They are used to organize commands, listeners and states into a class. In addiction, say we want to work on a function for our bot but don't want any downtime. We can use cogs to unload said function and then load it after updating the function. It's super useful for testing since we don't have to shutdown and reboot the bot eachtime we need to make small adjustments to the code.
+  - load (cog_name)
+  - unload (cog_name)
+  - reload (cog_name)
+
+
+---
+### Command Takeaway 
+- ping
+  - simple user command to check for response from bot
+  - pong!
+- eightball
+  - altering command name to not be function name 
+    - ie) @commands.command(alisess=['8ball'])
+    - ie) @commands.command(name='8ball')
+  - replying to user message
+- spam
+  - sending multiple response back
+  - playing with multi arguments
+    - .spam 5 some text
+      - async def spam(ctx, num, arg):
+      - print(arg) # some
+    - .spam 5 "some text"
+      - async def spam(ctx, num, arg):
+      - print(arg) # some text
+    - .spam 5 some text
+      - async def spam(ctx, num, *arg):
+      - print(arg) # ('some text',)
+- guess
+  - user interaction, waiting for user response
+  - time out function for if user takes too long
+- exit 
+  - hidden commands 
+    - ie) @bot.command(hidden=True)
+    - user base commands (admin only)
+- load, unload, and reload
+  - how to use cogs
+  - error handling
+
+
+## Future Commands
+- dog => get image of dog (best pet)
+- clip => sometimes people say things and then delete or edit, but i'm clipping it
+- fight => someone wronged you, challenge them to a virtual fight
+- currency system => i want to gamble but with infinite funds
