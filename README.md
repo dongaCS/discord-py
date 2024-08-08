@@ -48,10 +48,10 @@ python3 -m venv .ENV_DIR
 4. A prompt: **We noticed a new environment has been created. Do you want to select it for the workspace folder?**
    - Click **Yes**
 
-![steps.png](https://github.com/dongaCS/discord-py/blob/main/step%20.png?raw=true)
+![steps.png](https://github.com/dongaCS/discord-py/blob/main/images/step%20.png?raw=true)
 - Open a new terminal and see if its (.ENV_DIR) CURRENT_PATH % then its activate
   
-![active.png](https://github.com/dongaCS/discord-py/blob/main/active.png?raw=true)
+![active.png](https://github.com/dongaCS/discord-py/blob/main/images/active.png?raw=true)
 
 - To exit out of the venv do command `deactivate` and (.ENV_DIR) should disappear
 - To reactivate, open a new terminal at folder
