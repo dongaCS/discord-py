@@ -140,7 +140,9 @@ TO BE CONTINUED...
 
 
 ## Future Commands
-- dog => get image of dog (best pet)
+- ~~dog => get image of dog (best pet)~~ with cat, duck and fox 
+  - pip3 install requests
+  - pip3 freeze > requirements.txt
 - clip => sometimes people say things and then delete or edit, but i'm clipping it
 - fight => someone wronged you, challenge them to a virtual fight
 - currency system => i want to gamble but with infinite funds
