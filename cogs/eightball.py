@@ -8,7 +8,7 @@ class EightBall(commands.Cog):
         self.bot = bot
 
     # .8ball works as well as .eightball
-    @commands.command(aliases=['8ball'])
+    @commands.command(name='8ball')
     async def eightball(self, ctx):
         await ctx.reply(random.choice([
         "It is certain.",
