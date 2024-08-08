@@ -26,7 +26,7 @@ async def on_ready():
     print("------------- PY BOT RUNNING -------------")
 
 # shutdown bot
-@bot.command(hidden=True)
+@bot.command(hidden=True) # hides from .help
 async def exit(ctx):
     if str(ctx.author.id) in ADMIN:
         await ctx.send('**Ciao**')
@@ -50,7 +50,7 @@ async def main():
 COGS
 '''
 # load x cog
-@bot.command(hidden=True) # hides from .help
+@bot.command(hidden=True) 
 async def load(ctx, extension):
     if str(ctx.author.id) in ADMIN:
         await bot.load_extension(f'cogs.{extension}')
