@@ -9,7 +9,11 @@ class EightBall(commands.Cog):
 
     # .8ball works as well as .eightball
     @commands.command(name='8ball')
-    async def eightball(self, ctx):
+    async def eightball(self, ctx, arg: str = ""):
+        
+        if arg == "":
+            return await ctx.reply('Asking me a question next time')
+        
         await ctx.reply(random.choice([
         "It is certain.",
         "It is decidedly so.",
