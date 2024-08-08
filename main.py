@@ -27,7 +27,7 @@ async def on_ready():
 
 # shutdown bot
 @bot.command(hidden=True) # hides from .help
-async def exit(ctx):
+async def quit(ctx):
     if str(ctx.author.id) in ADMIN:
         await ctx.send('**Ciao**')
         await bot.close()
