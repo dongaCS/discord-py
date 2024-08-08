@@ -6,9 +6,9 @@ class Spam(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def spam(self, ctx, count, *args):
+    async def spam(self, ctx, num: int, *args):
         limit = 10 # easy access for change
-        num = int(count) # count is a string
+        
         if num > limit:
             return await ctx.reply(f'No more than {limit}', mention_author=False)
         elif num <= 0:
