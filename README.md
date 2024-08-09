@@ -112,7 +112,7 @@ TO BE CONTINUED...
   - pong!
 - eightball
   - altering command name to not be function name 
-    - ie) @commands.command(alisess=['8ball'])
+    - ie) @commands.command(aliases=['8ball'])
     - ie) @commands.command(name='8ball')
   - replying to user message
 - spam
@@ -140,9 +140,9 @@ TO BE CONTINUED...
 
 
 ## Future Commands
-- ~~dog => get image of dog (best pet)~~ with cat, duck and fox 
+- dog => get image of dog (best pet) also added cat, duck and fox - DONE
   - pip3 install requests
   - pip3 freeze > requirements.txt
-- clip => sometimes people say things and then delete or edit, but i'm clipping it
+- clip => sometimes people say things and then delete or edit, but i'm clipping it - DONE
 - fight => someone wronged you, challenge them to a virtual fight
 - currency system => i want to gamble but with infinite funds
