@@ -7,6 +7,8 @@ from discord.ext import commands
 
 intents = discord.Intents.default()
 intents.message_content = True
+# intents.members = True
+intents.guilds = True # for seeing channels
 bot = commands.Bot(command_prefix='.', intents=intents)
 
 load_dotenv() # set .env variables
@@ -64,7 +66,7 @@ async def unload(ctx, extension):
         await ctx.reply(f'Unloaded {extension}', mention_author=False)
 
 # reloads x cog
-@bot.command(hidden=True)
+@bot.command(hidden=True, aliases=['r'])
 async def reload(ctx, extension):
     if str(ctx.author.id) in ADMIN:
         await bot.unload_extension(f'cogs.{extension}')
