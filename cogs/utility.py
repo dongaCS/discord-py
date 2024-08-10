@@ -7,7 +7,11 @@ class Clip(commands.Cog):
     def __init__(self, bot):
         self.bot = bot # client
 
-    @commands.Cog.listener()
+
+    ##############################
+    ##  DELETE LISTENER
+    ##############################
+    # @commands.Cog.listener() # MUST BE ON
     async def on_message_delete(self, ctx):
         if ctx.author.bot: # makes sure its not a bot
             return
@@ -38,7 +42,10 @@ class Clip(commands.Cog):
         await channel_embed.send(embed=info)
 
 
-    @commands.Cog.listener()
+    ##############################
+    ##  EDIT LISTENER
+    ##############################
+    # @commands.Cog.listener() # MUST BE ON
     async def on_message_edit(self, before, after):
         if before.author.bot: # makes sure its not a bot
             return
@@ -70,6 +77,9 @@ class Clip(commands.Cog):
         await channel_embed.send(embed=info)
 
 
+##############################
+##  ADD COG
+##############################
 async def setup(bot):
     await bot.add_cog(Clip(bot))
 

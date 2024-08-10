@@ -2,13 +2,16 @@ from discord.ext import commands
 import requests
 
 
-class Animals(commands.Cog):
+class Animals(commands.Cog, description="Stare into the void except at animal images"):
 
     def __init__(self, bot):
         self.bot = bot
 
-    # goodest dog, i'm not bias
-    @commands.command()
+
+    ##############################
+    ##  DOG
+    ##############################
+    @commands.command(brief="The goodest boy and girl", description="Get a random dog")
     async def dog(self, ctx):
         url = "https://random.dog/woof.json"
         response = requests.get(url) 
@@ -20,8 +23,11 @@ class Animals(commands.Cog):
         else: 
             await ctx.reply('The dogs are out curing depression, please try again')
     
-    # cat
-    @commands.command()
+
+    ##############################
+    ##  CAT
+    ##############################
+    @commands.command(brief="It's a cat", description="Disturb a random cat")
     async def cat(self, ctx):
         url = "https://api.thecatapi.com/v1/images/search"
         response = requests.get(url) 
@@ -33,8 +39,11 @@ class Animals(commands.Cog):
         else: 
             await ctx.reply("The cats are ignoring you, please (don't) try again")
 
-    # duck
-    @commands.command()
+
+    ##############################
+    ##  DUCK
+    ##############################
+    @commands.command(brief="Quack Quack!", description="Talk to the random duck and debug code")
     async def duck(self, ctx):
         url = "https://random-d.uk/api/v2/random"
         response = requests.get(url) 
@@ -46,8 +55,11 @@ class Animals(commands.Cog):
         else: 
             await ctx.reply("The ducks went for a swim, please try again")
 
-    # fox
-    @commands.command()
+
+    ##############################
+    ##  FOX 
+    ##############################
+    @commands.command(brief="Wa-pa-pa-pa-pa-pa-pow!", description="That's what the random fox is going to say")
     async def fox(self, ctx):
         url = "https://randomfox.ca/floof/"
         response = requests.get(url) 
@@ -59,5 +71,9 @@ class Animals(commands.Cog):
         else: 
             await ctx.reply("The foxes are trying to say something, what is it? Please try again.")
 
+
+##############################
+##  ADD COG
+##############################
 async def setup(bot):
     await bot.add_cog(Animals(bot))

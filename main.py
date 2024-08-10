@@ -4,7 +4,12 @@ from dotenv import load_dotenv
 
 import discord
 from discord.ext import commands
+from pretty_help import EmojiMenu, PrettyHelp
 
+
+##############################
+##  BOT INIT and QUIT
+##############################
 intents = discord.Intents.default()
 intents.message_content = True
 # intents.members = True
@@ -14,15 +19,6 @@ bot = commands.Bot(command_prefix='.', intents=intents)
 load_dotenv() # set .env variables
 ADMIN = [os.getenv("TEMP_ACC"), os.getenv("ALT_ACC")]
 
-
-# simple ping 
-@bot.command()
-async def ping(ctx):
-    await ctx.send('pong')
-
-'''
-BOT START AND EXIT
-'''
 @bot.event
 async def on_ready():
     print("------------- PY BOT RUNNING -------------")
@@ -48,9 +44,9 @@ async def main():
         await bot.start(os.getenv("TOKEN"))
 
 
-'''
-COGS
-'''
+##############################
+##  COGS
+##############################
 # load x cog
 @bot.command(hidden=True) 
 async def load(ctx, extension):
@@ -73,10 +69,6 @@ async def reload(ctx, extension):
         await bot.load_extension(f'cogs.{extension}')
         await ctx.reply(f'Reloaded {extension}', mention_author=False)
 
-
-'''
-ERROR HANDLING
-'''
 @load.error
 async def load_err(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
@@ -93,7 +85,21 @@ async def unload_err(ctx, error):
         await ctx.reply("Which cog file?", mention_author=False)
 
 
-'''
-STARTS THE BOT
-'''
+##############################
+##  HELP
+##############################
+color = discord.Color.red()
+menu = EmojiMenu(page_left="⬅️", page_right="➡️", remove="❌", active_time=30)
+# updates help settings
+bot.help_command = PrettyHelp(color=color, menu=menu)
+
+
+##############################
+##  START BOT
+##############################
+# simple ping for connection testing
+@bot.command(hidden=True)
+async def ping(ctx):
+    await ctx.send('pong')
+
 asyncio.run(main()) # loads the cogs and runs bot
