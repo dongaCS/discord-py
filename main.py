@@ -28,7 +28,7 @@ async def on_ready():
     print("------------- PY BOT RUNNING -------------")
 
 # shutdown bot
-@bot.command(hidden=True) # hides from .help
+@bot.command(hidden=True, aliases=['q', 'exit']) # hides from .help
 async def quit(ctx):
     if str(ctx.author.id) in ADMIN:
         await ctx.send('**Ciao**')
