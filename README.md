@@ -125,8 +125,14 @@ TO BE CONTINUED...
       - async def spam(ctx, num, arg):
       - print(arg) # some text
     - .spam 5 some text
-      - async def spam(ctx, num, *arg):
+      - async def spam(ctx, num, *arg):  
       - print(arg) # ('some text',)
+      - arg = ''.join(arg) # some text
+    - .spam 5 some text
+      - async def spam(self, ctx, num: int, *, arg): # *, arg allows for string to follow command
+      - print(arg) # some text 
+      - num: int allows for commands.BadArgument error handling
+      - *, arg allows for commands.MissingRequiredArgument
 - guess
   - user interaction, waiting for user response
   - time out function for if user takes too long
