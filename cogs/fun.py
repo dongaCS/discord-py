@@ -41,7 +41,7 @@ class Fun(commands.Cog, description="Silly random commands to play with"):
     @eightball.error
     async def load_err(self, ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
-            await ctx.reply('Ask me a question next time', mention_author=False)
+            await ctx.reply('Ask me a question or use ```.help 8ball```', mention_author=False)
         
 
     ##############################
@@ -77,7 +77,7 @@ class Fun(commands.Cog, description="Silly random commands to play with"):
     ##  SPAM
     ##############################
     @commands.command(brief="I'll spam for you", description="I'll spam it no more than 10 times")
-    async def spam(self, ctx, num: int, *message):
+    async def spam(self, ctx, num: int, *, message):
         limit = 10 # easy access for change
         
         if num > limit:
@@ -85,11 +85,15 @@ class Fun(commands.Cog, description="Silly random commands to play with"):
         elif num <= 0:
             return await ctx.reply('Nice try, must be atleast 1', mention_author=False)
         
-        message = ' '.join(message) # *message is a tuple, we make it a string
         for i in range(0, num):
             await ctx.send(f'{message}')
 
-
+    @spam.error
+    async def load_err(self, ctx, error):
+        if isinstance(error, commands.BadArgument):
+            await ctx.reply('Pass me a number or use ```.help spam```', mention_author=False)
+        elif isinstance(error, commands.MissingRequiredArgument):
+            await ctx.reply('Pass me something to spam ```.help spam```', mention_author=False)
 
 
 
