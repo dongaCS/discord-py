@@ -74,13 +74,13 @@ async def load_err(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
         await ctx.reply("Which cog file?", mention_author=False)
 
-@unload.error
-async def reload_err(ctx, error):
+@reload.error
+async def unload_err(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
         await ctx.reply("Which cog file?", mention_author=False)
 
-@reload.error
-async def unload_err(ctx, error):
+@unload.error
+async def reload_err(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
         await ctx.reply("Which cog file?", mention_author=False)
 
