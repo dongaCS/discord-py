@@ -205,8 +205,12 @@ class Fun(commands.Cog, description="Silly random commands to play with"):
         except asyncio.TimeoutError: # error if "accept" wasn't typed 
             return await ctx.send(f"**{opponent.name}** didn't show. Coward.")
 
- 
-
+    @fight.error
+    async def load_err(self, ctx, error):
+        if isinstance(error, commands.BadArgument):
+            await ctx.reply('Pass me someone to fight @user or use `.help fight`', mention_author=False)
+        elif isinstance(error, commands.MissingRequiredArgument):
+            await ctx.reply('Pass me someone to fight with via ping or use `.help fight`', mention_author=False)
 
 
 
