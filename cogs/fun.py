@@ -2,6 +2,7 @@ from discord.ext import commands
 
 import random
 import asyncio
+import discord
 
 class Fun(commands.Cog, description="Silly random commands to play with"):
 
@@ -93,7 +94,7 @@ class Fun(commands.Cog, description="Silly random commands to play with"):
         if isinstance(error, commands.BadArgument):
             await ctx.reply('Pass me a number or use ```.help spam```', mention_author=False)
         elif isinstance(error, commands.MissingRequiredArgument):
-            await ctx.reply('Pass me something to spam ```.help spam```', mention_author=False)
+            await ctx.reply('Pass me something to spam or use ```.help spam```', mention_author=False)
 
 
 
