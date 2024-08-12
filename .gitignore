@@ -5,4 +5,6 @@ __pycache__
 .ENV_DIR
 .DS_STORE
 
+t.py
+
 notes.txt
