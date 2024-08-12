@@ -101,7 +101,7 @@ class Fun(commands.Cog, description="Silly random commands to play with"):
     ##############################
     ##  FIGHT
     ##############################
-    @commands.command()
+    @commands.command(brief="1v1 someone", description="Got beef with someone? Settle it here.")
     async def fight(self, ctx, opponent: discord.Member):
         class Player: 
             def __init__(self, user):
