@@ -96,6 +96,8 @@ TO BE CONTINUED...
 - guess => lets play a game
   - .guess
 
+TO BE UPDATED
+
 ---
 ### Commands for Dev
 - exit => closes the bot
@@ -143,17 +145,17 @@ TO BE CONTINUED...
 - load, unload, and reload
   - how to use cogs
   - error handling
-
+  
+TO BE UPDATED
 
 ## Future Commands
 - dog (DONE) => get image of dog (best pet) also added cat, duck and fox
   - pip3 install requests
   - pip3 freeze > requirements.txt
-- clip (DONE) => sometimes people say things and then delete or edit, but i'm clipping it
+- clip (DONE - dev only) => sometimes people say things and then delete or edit, but i'm clipping it
 - help (DONE) => improve the basic help menu
   - pip3 install discord-pretty-help
   - pip3 freeze > requirements.txt
 - dm => sometimes the mods doesnt want to be the one to break the news so we send the bot
-- 
-- fight => someone wronged you, challenge them to a virtual fight
+- fight (DONE) => someone wronged you, challenge them to a virtual fight
 - currency system => i want to gamble but with infinite funds
