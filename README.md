@@ -80,72 +80,55 @@ pip3 freeze > requirements.txt
 ### Discord Account 
 In order to make a Discord Bot, we need a create a [Discord Account](https://discord.com/login)
 ### Discord Bot Token 
-- Follow this to setup Bot and Token [Discord.py](https://discordpy.readthedocs.io/en/stable/discord.html)
+- Follow this to setup Bot and Token from [Discord.py](https://discordpy.readthedocs.io/en/stable/discord.html)
 
 TO BE CONTINUED...
 
 ## The Bot 
-(will beautify at some point)
 ### Commands
-- ping => send back pong
-  - .ping 
-- 8ball(string) => ask it a question and it'll give some the definitive answer (never wrong)
-  - .8ball will complete this readme?
-- spam(number, string) => i'll spam for you
-  - .spam 5 lol
-- guess => lets play a game
-  - .guess
-
-TO BE UPDATED
+| Command | Description |
+| --- | --- |
+| `8ball <question>` | ask it a *question* and get an answer |
+| `spam <number> <message>` | spams a the *message* some *number* of times, max is 10|
+| `guess` | play a guessing game |
+| `dog` | get an image of a dog |
+| `cat` | get an image of a cat |
+| `duck` | get an image of a duck |
+| `fox` | get an image of a fox |
+| `help` | get information about commands |
+| `fight <opponent>` | ping the *opponent* you want to fight |
 
 ---
 ### Commands for Dev
-- exit => closes the bot
-- Cogs are like modules/extensions for discord.py bots. They are used to organize commands, listeners and states into a class. In addiction, say we want to work on a function for our bot but don't want any downtime. We can use cogs to unload said function and then load it after updating the function. It's super useful for testing since we don't have to shutdown and reboot the bot eachtime we need to make small adjustments to the code.
-  - load (cog_name)
-  - unload (cog_name)
-  - reload (cog_name)
+| Command | Description |
+| --- | --- |
+| `ping` | sends back pong |
+| `load <file_name>` | loads a cog |
+| `unload <file_name>` | unloads a cog |
+| `reload <file_name>` | reloads a cog |
+| `on_message_edit` | sends a copy of edited message to designated channel |
+| `on_message_delete` | sends a copy of deleted message to designated channel |
+| `quit` | shuts down the bot |
+- Cogs are like modules/extensions for discord.py bots. They are used to organize commands, listeners and states into a class. In addiction, say we want to work on a function for our bot but don't want any downtime. We can use cogs to unload said function and then load it after updating the function. It's super useful for testing since we don't have to shutdown and reboot the bot each time we need to make small adjustments to the code.
+
+
 
 
 ---
 ### Command Takeaway 
-- ping
-  - simple user command to check for response from bot
-  - pong!
-- eightball
-  - altering command name to not be function name 
-    - ie) @commands.command(aliases=['8ball'])
-    - ie) @commands.command(name='8ball')
-  - replying to user message
-- spam
-  - sending multiple response back
-  - playing with multi arguments
-    - .spam 5 some text
-      - async def spam(ctx, num, arg):
-      - print(arg) # some
-    - .spam 5 "some text"
-      - async def spam(ctx, num, arg):
-      - print(arg) # some text
-    - .spam 5 some text
-      - async def spam(ctx, num, *arg):  
-      - print(arg) # ('some text',)
-      - arg = ''.join(arg) # some text
-    - .spam 5 some text
-      - async def spam(self, ctx, num: int, *, arg): # *, arg allows for string to follow command
-      - print(arg) # some text 
-      - num: int allows for commands.BadArgument error handling
-      - *, arg allows for commands.MissingRequiredArgument
-- guess
-  - user interaction, waiting for user response
-  - time out function for if user takes too long
-- exit 
-  - hidden commands 
-    - ie) @bot.command(hidden=True)
-    - user base commands (admin only)
-- load, unload, and reload
-  - how to use cogs
-  - error handling
-  
+| Command | Takeaway |
+| --- | --- |
+| ping | - simple user command to check for response from bot |
+| 8ball | - altering command name to not be function name <ul><li> ie) @commands.command(aliases=['8ball']) </li><li> ie) @commands.command(name='8ball') </li></ul> - replying to user message |
+| spam | - sending multiple response back <br> - playing with multi arguments <ul><li>async def spam(self, ctx, number: int, *, arg):</li><li>`nummber: int` allows for commands.BadArgument error handling</li><li>`*, arg` allows for commands.MissingRequiredArgument</li></ul>   - error handling
+| guess |   - user interaction, waiting for user response<br> - time out function for if user takes too long
+| quit | - hidden commands <ul><li> ie) @bot.command(hidden=True) </li></ul> - user base commands (admin only)
+| load, unload, reload | - how to use cogs
+| dog, cat, duck, fox | - `pip3 install requests`<br> - how to make api request |
+| on_message_delete/edit | - built in discord event listener<br> - sending message in different channel<br> - discord embeds
+| help | - `install discord-pretty-help`<br> - built in discord command<br> - description for cogs<br> - brief and description for commands |
+| fight | - multi user interactions<br> - classes in commands 
+
 TO BE UPDATED
 
 ## Future Commands
