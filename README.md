@@ -68,7 +68,14 @@ python3 -m pip install -U discord.py
 ```
 pip3 install python-dotenv
 ```
-
+3. [requests 2.32.3](https://pypi.org/project/requests/)
+```
+pip3 install requests
+```
+4. [discord-pretty-help 2.0.7](https://pypi.org/project/discord-pretty-help/)
+```
+pip3 install discord-pretty-help
+```
 ---
 #### Python dependencies are defined in: requirements.txt
 ```
@@ -120,13 +127,13 @@ TO BE CONTINUED...
 | --- | --- |
 | ping | - simple user command to check for response from bot |
 | 8ball | - altering command name to not be function name <ul><li> ie) @commands.command(aliases=['8ball']) </li><li> ie) @commands.command(name='8ball') </li></ul> - replying to user message |
-| spam | - sending multiple response back <br> - playing with multi arguments <ul><li>async def spam(self, ctx, number: int, *, arg):</li><li>`nummber: int` allows for commands.BadArgument error handling</li><li>`*, arg` allows for commands.MissingRequiredArgument</li></ul>   - error handling
+| spam | - sending multiple response back <br> - playing with multi arguments <ul><li>async def spam(self, ctx, number: int, *, arg):</li></ul>  - error handling <ul><li>`nummber: int` allows for commands.BadArgument error handling</li><li>`*, arg` allows for commands.MissingRequiredArgument</li></ul>
 | guess |   - user interaction, waiting for user response<br> - time out function for if user takes too long
 | quit | - hidden commands <ul><li> ie) @bot.command(hidden=True) </li></ul> - user base commands (admin only)
 | load, unload, reload | - how to use cogs
 | dog, cat, duck, fox | - `pip3 install requests`<br> - how to make api request |
 | on_message_delete/edit | - built in discord event listener<br> - sending message in different channel<br> - discord embeds
-| help | - `install discord-pretty-help`<br> - built in discord command<br> - description for cogs<br> - brief and description for commands |
+| help | - `pip3 install discord-pretty-help`<br> - built in discord command<br> - description for cogs<br> - brief and description for commands |
 | fight | - multi user interactions<br> - classes in commands 
 
 TO BE UPDATED
