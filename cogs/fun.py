@@ -7,14 +7,14 @@ import os
 
 ADMIN = [os.getenv("TEMP_ACC"), os.getenv("ALT_ACC")]
 
-class Fun(commands.Cog, description="Silly random commands to play with"):
+class Fun(commands.Cog, description="Random silly commands to play with"):
 
     def __init__(self, bot):
         self.bot = bot
 
 
     ##############################
-    ##  8ball
+    ##  8BALL
     ##############################
     @commands.command(name='8ball', brief="Ask me a question", description="Never wrong") # change command name to 8ball 
     async def eightball(self, ctx, question):
