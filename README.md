@@ -92,6 +92,11 @@ In order to make a Discord Bot, we need a create a [Discord Account](https://dis
 TO BE CONTINUED...
 
 ## The Bot 
+### Running it Locally
+To run the Bot, keep the terminal open and do command:
+- `python3 main.py`
+- returns: ------------- PY BOT RUNNING -------------
+
 ### Commands
 | Command | Description |
 | --- | --- |
