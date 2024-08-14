@@ -79,15 +79,15 @@ class Fun(commands.Cog, description="Silly random commands to play with"):
     ##  SPAM
     ##############################
     @commands.command(brief="I'll spam for you", description="I'll spam it no more than 10 times")
-    async def spam(self, ctx, num: int, *, message):
+    async def spam(self, ctx, number: int, *, message):
         limit = 10 # easy access for change
         
-        if num > limit:
+        if number > limit:
             return await ctx.reply(f'No more than {limit}', mention_author=False)
-        elif num <= 0:
+        elif number <= 0:
             return await ctx.reply('Nice try, must be atleast 1', mention_author=False)
         
-        for i in range(0, num):
+        for i in range(0, number):
             await ctx.send(f'{message}')
 
     @spam.error
