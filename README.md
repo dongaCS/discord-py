@@ -97,7 +97,7 @@ To run the Bot, keep the terminal open and do command:
 - `python3 main.py`
 - returns: ------------- PY BOT RUNNING -------------
 
-### Commands
+### Commands for Users
 | Command | Description |
 | --- | --- |
 | `8ball <question>` | ask it a *question* and get an answer |
@@ -107,24 +107,27 @@ To run the Bot, keep the terminal open and do command:
 | `cat` | get an image of a cat |
 | `duck` | get an image of a duck |
 | `fox` | get an image of a fox |
-| `help` | get information about commands |
 | `fight <opponent>` | ping the *opponent* you want to fight |
+| `help` | get information about commands |
 
 ---
-### Commands for Dev
+### Commands for Devs
 | Command | Description |
 | --- | --- |
 | `ping` | sends back pong |
 | `load <file_name>` | loads a cog |
 | `unload <file_name>` | unloads a cog |
 | `reload <file_name>` | reloads a cog |
-| `on_message_edit` | sends a copy of edited message to designated channel |
-| `on_message_delete` | sends a copy of deleted message to designated channel |
 | `quit` | shuts down the bot |
 - Cogs are like modules/extensions for discord.py bots. They are used to organize commands, listeners and states into a class. In addiction, say we want to work on a function for our bot but don't want any downtime. We can use cogs to unload said function and then load it after updating the function. It's super useful for testing since we don't have to shutdown and reboot the bot each time we need to make small adjustments to the code.
 
-
-
+---
+### Commands for Mods
+| Command | Description |
+| --- | --- |
+| `on_message_edit` | sends a copy of edited message to designated channel |
+| `on_message_delete` | sends a copy of deleted message to designated channel |
+- These commands are for making moderation of the server easier.
 
 ---
 ### Command Takeaway 
