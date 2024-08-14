@@ -97,7 +97,7 @@ class Fun(commands.Cog, description="Silly random commands to play with"):
         if isinstance(error, commands.BadArgument):
             await ctx.reply('Pass me a number or use `.help spam`', mention_author=False)
         elif isinstance(error, commands.MissingRequiredArgument):
-            await ctx.reply('Pass me something to spam or use `.help spam`', mention_author=False)
+            await ctx.reply('Pass me how many times to spam and something to spam or use `.help spam`', mention_author=False)
 
 
     ##############################
@@ -115,7 +115,7 @@ class Fun(commands.Cog, description="Silly random commands to play with"):
 
         if (opponent.bot and opponent.id == int(os.getenv("BOT"))): # if you dare challenge the almighty bot
             await ctx.send("You dare challenge me? Fine.")
-            await ctx.send(f'**{opponent.name}** backhands {ctx.author.name}** and causes **9001** damage!')
+            await ctx.send(f'**{opponent.name}** backhands **{ctx.author.name}** and causes **9001** damage!')
             return await ctx.reply("https://tenor.com/view/filthy-frank-know-your-place-implicit-gif-26537479")
         
         if opponent.bot: # can't fight any bot
@@ -166,7 +166,7 @@ class Fun(commands.Cog, description="Silly random commands to play with"):
                 
                 if turn % 2 == 0: # player1 goes first
                     try:
-                        style1 = await self.bot.wait_for('message', check=player1_stlye, timeout=5.0)
+                        style1 = await self.bot.wait_for('message', check=player1_stlye, timeout=10.0)
                         damage = calc_damage(style1.content, player1.user) # calc damage player2 takes based on player1's attack
                         if damage:
                             player2.take_damage(damage) # deals damage if any
@@ -178,7 +178,7 @@ class Fun(commands.Cog, description="Silly random commands to play with"):
                         return await ctx.send(f"**{ctx.author.name}** has stopped responding. This is your win **{opponent.name}**.")       
                 else:
                     try:
-                        style2 = await self.bot.wait_for('message', check=player2_stlye, timeout=5.0)
+                        style2 = await self.bot.wait_for('message', check=player2_stlye, timeout=10.0)
                         damage = calc_damage(style2.content, player2.user)
                         if damage:
                             player1.take_damage(damage) 
