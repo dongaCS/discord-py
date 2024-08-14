@@ -5,6 +5,8 @@ import asyncio
 import discord
 import os
 
+ADMIN = [os.getenv("TEMP_ACC"), os.getenv("ALT_ACC")]
+
 class Fun(commands.Cog, description="Silly random commands to play with"):
 
     def __init__(self, bot):
@@ -145,25 +147,27 @@ class Fun(commands.Cog, description="Silly random commands to play with"):
                
                 # check functions for attack style
                 def player1_stlye(m): 
-                    return (m.content == "light" or m.content == "heavy" or m.content == "medium") and m.author.id == ctx.author.id
+                    return (m.content == "light" or m.content == "medium" or m.content == "heavy" or m.content == "ultra instinct") and m.author.id == ctx.author.id
                 
                 def player2_stlye(m):
-                    return (m.content == "light" or m.content == "heavy" or m.content == "medium") and m.author.id == opponent.id
+                    return (m.content == "light" or m.content == "medium" or m.content == "heavy" or m.content == "ultra instinct") and m.author.id == opponent.id
 
                 # calcs prop of attack style hitting
-                def calc_damage(type):
+                def calc_damage(type, id):
                     if type == "light": # always hits
                         return 20
                     elif type == "medium" and random.random() <= .33: # 1 in 3
                         return 40
                     elif type == "heavy" and random.random() <= 0.125: # 1 in 8 
                         return 80
+                    elif type == "ultra instinct" and str(id) in ADMIN:
+                        return 9000
                     return 0
                 
                 if turn % 2 == 0: # player1 goes first
                     try:
                         style1 = await self.bot.wait_for('message', check=player1_stlye, timeout=5.0)
-                        damage = calc_damage(style1.content) # calc damage player2 takes based on player1's attack
+                        damage = calc_damage(style1.content, player1.user) # calc damage player2 takes based on player1's attack
                         if damage:
                             player2.take_damage(damage) # deals damage if any
                             await ctx.send(f'**{ctx.author.name}** took **{damage}** damage! Leaving them with {player2.hp} hp.')
@@ -175,7 +179,7 @@ class Fun(commands.Cog, description="Silly random commands to play with"):
                 else:
                     try:
                         style2 = await self.bot.wait_for('message', check=player2_stlye, timeout=5.0)
-                        damage = calc_damage(style2.content)
+                        damage = calc_damage(style2.content, player2.user)
                         if damage:
                             player1.take_damage(damage) 
                             await ctx.send(f'**{opponent.name}** took **{damage}** damage! Leaving them with {player1.hp} hp.')
