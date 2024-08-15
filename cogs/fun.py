@@ -45,7 +45,7 @@ class Fun(commands.Cog, description="Random silly commands to play with"):
     @eightball.error
     async def load_err(self, ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
-            await ctx.reply('Ask me a question or use ```.help 8ball```', mention_author=False)
+            await ctx.reply('Ask me a question or use `.help 8ball`', mention_author=False)
         
 
     ##############################
