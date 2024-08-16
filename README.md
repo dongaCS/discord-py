@@ -7,9 +7,12 @@
   - Virtual Environments (venv)
   - Dependencies
 - [Setting up Discord App](#Setting-up-Discord-App)
+  - Discord Account
+  - Discord Bot Token
 - [The Bot](#The-Bot)
   - Commands
   - Commands for Dev
+  - Commands for Mods
   - Command Takeaway
 
 
