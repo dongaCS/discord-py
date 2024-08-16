@@ -1,5 +1,5 @@
 # Discord Bot in PY
- playing with discord bot in python
+playing with discord bot in python
 
 ## Table of Contents
 - [Setting up Python](#Setting-up-Python)
@@ -10,11 +10,12 @@
   - Discord Account
   - Discord Bot Token
 - [The Bot](#The-Bot)
+  - Running it Locally
   - Commands
   - Commands for Dev
   - Commands for Mods
   - Command Takeaway
-
+- [Future Commands](#Future-Commands)
 
 ## Setting up Python
 ### Installing Python
@@ -61,7 +62,6 @@ python3 -m venv .ENV_DIR
 
 ---
 ### Dependencies
-
 #### (.ENV_DIR) CURRENT_PATH % Installs
 1. [discord.py 2.4.0](https://pypi.org/project/discord.py/)
 ```
@@ -71,14 +71,7 @@ python3 -m pip install -U discord.py
 ```
 pip3 install python-dotenv
 ```
-3. [requests 2.32.3](https://pypi.org/project/requests/)
-```
-pip3 install requests
-```
-4. [discord-pretty-help 2.0.7](https://pypi.org/project/discord-pretty-help/)
-```
-pip3 install discord-pretty-help
-```
+
 ---
 #### Python dependencies are defined in: requirements.txt
 ```
@@ -96,9 +89,32 @@ TO BE CONTINUED...
 
 ## The Bot 
 ### Running it Locally
+Starting code for main.py
+```Python
+import os
+from dotenv import load_dotenv
+
+import discord
+from discord.ext import commands
+
+intents = discord.Intents.default()
+intents.message_content = True
+bot = commands.Bot(command_prefix='.', intents=intents) # prefix that comes before a command
+
+@bot.event
+async def on_ready():
+    print("------------- BOT RUNNING -------------") # prints in terminal
+
+@bot.command()
+async def ping(ctx): # command called ping => .ping 
+    await ctx.send('pong')
+
+load_dotenv() # set .env variables
+bot.run(os.getenv("TOKEN"))
+```
 To run the Bot, keep the terminal open and do command:
 - `python3 main.py`
-- returns: ------------- PY BOT RUNNING -------------
+- returns: ------------- BOT RUNNING -------------
 
 ### Commands for Users
 | Command | Description |
