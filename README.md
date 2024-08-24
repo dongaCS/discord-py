@@ -9,8 +9,8 @@ playing with discord bot in python
 - [Setting up Discord App](#Setting-up-Discord-App)
   - Discord Account
   - Discord Bot Token
-- [The Bot](#The-Bot)
   - Running it Locally
+- [The Bot](#The-Bot)
   - Commands
   - Commands for Dev
   - Commands for Mods
@@ -82,12 +82,12 @@ pip3 freeze > requirements.txt
 ## Setting up Discord App
 ### Discord Account 
 In order to make a Discord Bot, we need a create a [Discord Account](https://discord.com/login)
+
+---
 ### Discord Bot Token 
 - Follow this to setup Bot and Token from [Discord.py](https://discordpy.readthedocs.io/en/stable/discord.html)
 
-TO BE CONTINUED...
-
-## The Bot 
+---
 ### Running it Locally
 Starting code for main.py
 ```Python
@@ -116,6 +116,7 @@ To run the Bot, keep the terminal open and do command:
 - `python3 main.py`
 - returns: ------------- BOT RUNNING -------------
 
+## The Bot 
 ### Commands for Users
 | Command | Description |
 | --- | --- |
@@ -175,4 +176,7 @@ TO BE UPDATED
   - pip3 freeze > requirements.txt
 - dm => sometimes the mods doesnt want to be the one to break the news so we send the bot
 - fight (DONE) => someone wronged you, challenge them to a virtual fight
+- trivia => prove you have high IQ
+- roast => sometimes life isn't about food, it's about taking it easy
+- pfp => can't see your friend's image, say less, we zoom in 
 - currency system => i want to gamble but with infinite funds
