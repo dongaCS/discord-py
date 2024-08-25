@@ -4,6 +4,7 @@ import random
 import asyncio
 import discord
 import os
+import requests
 
 ADMIN = [os.getenv("TEMP_ACC"), os.getenv("ALT_ACC")]
 
@@ -217,7 +218,65 @@ class Fun(commands.Cog, description="Random silly commands to play with"):
             await ctx.reply('Pass me someone to fight with via ping or use `.help fight`', mention_author=False)
 
 
+    ##############################
+    ##  TRIVIA
+    ##############################
+    @commands.command(brief="Test your knowledge", description="Flex your IQ or negative IQ")
+    async def trivia(self, ctx):
+        url = "https://opentdb.com/api.php?amount=1"
+        response = requests.get(url) 
 
+        # making call to api and checking to see if it was successful
+        if response.status_code == 200:
+            data = response.json()
+            results = data.get('results')[0] # save somes typing
+            correct = results.get('correct_answer') # saves the correct answer
+
+            # setup to ask user question
+            question = discord.Embed(
+                        title = f'{results.get('question')}',
+                        colour = discord.Colour.blue()
+                    )
+            
+            # we have multiple choice and true/false questions
+            # we need to figure out which one was send as checking solutions methods are different
+            if results.get('type') == 'multiple' : # multiple choice questions        
+                options = results.get('incorrect_answers') + [correct] # setup for shuffle
+                random.shuffle(options) # mix up choices
+
+                # setup so that we can check answer later
+                dic = {} 
+                letters = ['a', 'b', 'c', 'd']
+                str = ""
+                for i in range(len(letters)):
+                    dic.update({letters[i]: options[i]})
+                    str += f'{letters[i].upper()}. {dic[letters[i]]} \n'
+
+                question.description = str # displays the answer choices for user
+            else: # true or false questions
+                question.description = f'True or False'
+            
+            # asks the question with a ping at user
+            await ctx.reply(embed=question) 
+
+            # waiting for a response
+            def is_correct(m):
+                return m.author.id == ctx.author.id and m.channel.id == ctx.channel.id
+            try:
+                response = await self.bot.wait_for('message', check=is_correct, timeout=10.0)
+            except asyncio.TimeoutError:
+                return await ctx.send('Times up, study harder text time!')
+            
+            # checks to see if response is right or wrong
+            response = response.content.lower()
+            if (response == "false" or response == "true") and response == correct.lower():        
+                await ctx.send("Correct!")
+            elif len(response) == 1 and response in letters and dic[response] == correct:
+                await ctx.send("Well Done!")
+            else:
+                await ctx.send("Wrong, come back after studying some more.")
+        else: # api error 
+            await ctx.reply("Hmmm, still thinking of a question, please try again.")
 
 
 
