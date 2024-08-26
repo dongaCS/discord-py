@@ -86,11 +86,20 @@ class Fun(commands.Cog, description="Random silly commands to play with"):
     ##############################
     ##  RANDOM
     ##############################
-    @commands.command(brief="I'll give you random number", description="Random number between 1 and 100")
+    @commands.command(brief="I'll give you random number", description="Get a random number between 1 and 100")
     async def random(self, ctx):
         await ctx.send(random.randrange(1, 100))
 
 
+    ##############################
+    ##  FLIP
+    ##############################
+    @commands.command(brief="I'll flip a coin", description="Ultimate decision making via coin flip")
+    async def flip(self, ctx):
+        await ctx.send(random.choice(['heads', 'tails']))
+
+
+   
 
 
 ##############################
