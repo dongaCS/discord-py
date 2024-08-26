@@ -176,7 +176,7 @@ TO BE UPDATED
   - pip3 freeze > requirements.txt
 - dm => sometimes the mods doesnt want to be the one to break the news so we send the bot
 - fight (DONE) => someone wronged you, challenge them to a virtual fight
-- trivia => prove you have high IQ
+- trivia (DONE) => prove you have high IQ
 - roast => sometimes life isn't about food, it's about taking it easy
 - pfp => can't see your friend's image, say less, we zoom in 
 - currency system => i want to gamble but with infinite funds
