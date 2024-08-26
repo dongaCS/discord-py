@@ -66,8 +66,32 @@ class Fun(commands.Cog, description="Random silly commands to play with"):
             await ctx.reply('Pass me how many times to spam and something to spam or use `.help spam`', mention_author=False)
 
 
-    
-    
+    ##############################
+    ##  CHOOSE
+    ##############################
+    @commands.command(brief="I'll pick for you", description="I won't rig it, promise, I also take bribes.")
+    async def choose(self, ctx, *, choices):
+        str = choices.split(",")
+        if len(str) < 2:
+            return await ctx.send('Must have atleast two choices, use comma to split them.')
+        
+        await ctx.send(random.choice(str))
+
+    @choose.error
+    async def load_err(self, ctx, error):
+        if isinstance(error, commands.MissingRequiredArgument):
+            await ctx.reply("Must pass me something to choose between or use `.help choose`", mention_author=False)
+
+
+    ##############################
+    ##  RANDOM
+    ##############################
+    @commands.command(brief="I'll give you random number", description="Random number between 1 and 100")
+    async def random(self, ctx):
+        await ctx.send(random.randrange(1, 100))
+
+
+
 
 ##############################
 ##  ADD COG
