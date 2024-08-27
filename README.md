@@ -128,6 +128,11 @@ To run the Bot, keep the terminal open and do command:
 | `duck` | get an image of a duck |
 | `fox` | get an image of a fox |
 | `fight <opponent>` | ping the *opponent* you want to fight |
+| `trivia` | asks a trivia question |
+| `choose <choices>` | picks one of the choices, seperate by comma |
+| `random` | generates a random number between 1 and 100 |
+| `flip` | flip a coin |
+| `roast <target>` | ping the *target* you want to roast |
 | `help` | get information about commands |
 
 ---
@@ -162,8 +167,9 @@ To run the Bot, keep the terminal open and do command:
 | dog, cat, duck, fox | - `pip3 install requests`<br> - how to make api request |
 | on_message_delete/edit | - built in discord event listener<br> - sending message in different channel<br> - discord embeds
 | help | - `pip3 install discord-pretty-help`<br> - built in discord command<br> - description for cogs<br> - brief and description for commands |
-| fight | - multi user interactions<br> - classes in commands 
-
+| fight | - multi user interactions<br> - classes in commands |
+| trivia | - processing api request with different types of payload |
+| roast | - there was no free roast api just ai's<br> - made my own [api](https://roast-api.dongacs.workers.dev/) for the command
 TO BE UPDATED
 
 ## Future Commands
@@ -177,6 +183,6 @@ TO BE UPDATED
 - dm => sometimes the mods doesnt want to be the one to break the news so we send the bot
 - fight (DONE) => someone wronged you, challenge them to a virtual fight
 - trivia (DONE) => prove you have high IQ
-- roast => sometimes life isn't about food, it's about taking it easy
+- roast (DONE) => sometimes life isn't about food, it's about taking it easy
 - pfp => can't see your friend's image, say less, we zoom in 
 - currency system => i want to gamble but with infinite funds
