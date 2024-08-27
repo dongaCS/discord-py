@@ -1,6 +1,10 @@
 from discord.ext import commands
 
 import random
+import discord
+import requests
+import asyncio
+import os
 
 class Fun(commands.Cog, description="Random silly commands to play with"):
 
@@ -99,7 +103,32 @@ class Fun(commands.Cog, description="Random silly commands to play with"):
         await ctx.send(random.choice(['heads', 'tails']))
 
 
-   
+    ##############################
+    ##  ROAST
+    ##############################
+    @commands.command(breif="Lighthearted jokes", description="I will fight your fights for you")
+    async def roast(self, ctx, target: discord.Member):
+        url = os.getenv('ROAST_API')
+
+        try:
+            response = requests.get(url, timeout=10)
+        except asyncio.TimeoutError:
+            return await ctx.send('Server error, please try again later')
+
+        if response.status_code == 200:
+            data = response.json()
+            await ctx.send(f'<@{target.id}> {data.get("roast")}')
+        else: # api error 
+            await ctx.reply("Ahh the a duck was accidentally sent, please try again")
+
+    @roast.error
+    async def load_err(self, ctx, error):
+        if isinstance(error, commands.BadArgument):
+            await ctx.reply('Pass me someone to roast @user or use `.help fight`', mention_author=False)
+        elif isinstance(error, commands.MissingRequiredArgument):
+            await ctx.reply('Pass me someone to roast with via ping or use `.help fight`', mention_author=False)
+
+
 
 
 ##############################
