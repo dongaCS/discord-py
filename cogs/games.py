@@ -176,7 +176,7 @@ class Games(commands.Cog, description="It's game night."):
 
             # setup to ask user question
             question = discord.Embed(
-                        title = f'{results.get('question')}',
+                        title = f"{results.get('question')}",
                         colour = discord.Colour.blue()
                     )
             
